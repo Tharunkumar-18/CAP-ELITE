@@ -1,0 +1,15 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        HashMap<ListNode,Integer> map = new HashMap<>();
+        ListNode node = head;
+        while(node!=null && !map.containsKey(node)){
+            map.put(node,0);
+            node = node.next;
+        }
+        if(node !=null){
+            return node;
+        }
+
+        return null;
+    }
+}
