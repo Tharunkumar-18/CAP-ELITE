@@ -19,3 +19,43 @@ class Solution:
                 for j in range(0,x):
                     a.append(i)
         return a
+# java
+import java.math.*;
+import java.util.ArrayList;
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        HashMap<Integer,Integer> map1 = new HashMap<>();
+        HashMap<Integer,Integer> map2 = new HashMap<>();
+        for(int i : nums1){
+            if(map1.containsKey(i)){
+                map1.put(i,map1.get(i)+1);
+            }
+            else{
+                map1.put(i,1);
+            }
+        }
+        for(int i : nums2){
+            if(map2.containsKey(i)){
+                map2.put(i,map2.get(i)+1);
+            }
+            else{
+                map2.put(i,1);
+            }
+        }
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i=0;i<nums1.length;i++){
+            if(map1.containsKey(nums1[i]) && map2.containsKey(nums1[i]) && !arr.contains(nums1[i])){
+                int x = Math.min(map1.get(nums1[i]),map2.get(nums1[i]));
+                // System.out.println(arr);
+                for(int j = 0;j<x;j++){
+                    arr.add(nums1[i]); 
+                }
+            }
+        }
+        int[] x = new int[arr.size()];
+        for(int i=0;i<arr.size();i++){
+            x[i] = arr.get(i);
+        }
+        return x;
+    }
+}
