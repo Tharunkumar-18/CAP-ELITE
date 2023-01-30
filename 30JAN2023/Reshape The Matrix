@@ -1,0 +1,23 @@
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        a = []
+        z = []
+        for i in mat:
+            for j in range(0,len(mat[0])):
+                a.append(i[j])
+        # print(a)
+        m = len(mat)
+        n = len(mat[0])
+        if m*n!=r*c:
+            return mat
+        else:
+            y = 0
+            for i in range(0,r):
+                x = []
+                m = 0
+                while(m<c):
+                    x.append(a[y])
+                    y += 1
+                    m = m+1
+                z.append(x)
+        return z
